@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './index.scss';
+import CurrentForeCast from './components/CurrentForeCast';
 
 function App() {
   const [data, setData] = useState([]);
@@ -19,7 +20,6 @@ function App() {
         const info = await response.json();
         setData(info);
       }
-      console.log(lat, long);
     };
     getLocation();
   }, [lat, long]);
@@ -27,8 +27,8 @@ function App() {
   return (
     <>
       <div>
+        <CurrentForeCast currentData={data.current} />
         <h1>Hello Weather App</h1>
-        <div>{JSON.stringify(data)}</div>
       </div>
     </>
   );
