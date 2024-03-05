@@ -1,5 +1,9 @@
-const dailyForeCast = () => {
-  return <div>dailyForeCast</div>;
+const DailyForeCast = () => {
+  return (
+    <div>
+      <h1>DailyForecast</h1>
+    </div>
+  );
 };
 
-export default dailyForeCast;
+export default DailyForeCast;
