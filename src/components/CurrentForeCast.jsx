@@ -1,8 +1,12 @@
+import { formatedDate } from '../lib/helper';
+
 const CurrentForeCast = ({ currentData }) => {
-  console.log('current forecast: ', currentData);
   return (
     <section>
-      <h1>CurrentForeCast</h1>
+      <div className='location'>
+        <h1>{currentData.timezone}</h1>
+        <p>Today | {formatedDate(currentData.current.dt)}</p>
+      </div>
     </section>
   );
 };
