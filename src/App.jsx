@@ -3,7 +3,7 @@ import './index.scss';
 import CurrentForeCast from './components/CurrentForeCast';
 
 function App() {
-  const [data, setData] = useState(null); // Initialize data state to null
+  const [data, setData] = useState();
   const [lat, setLat] = useState('');
   const [long, setLong] = useState('');
   useEffect(() => {
@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     if (lat !== '' && long !== '') {
-      const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${
+      const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=metric&appid=${
         import.meta.env.VITE_API_KEY
       }`;
       fetch(apiUrl)
