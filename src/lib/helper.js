@@ -22,3 +22,7 @@ export const formatedDate = (timeStamp) => {
   const formattedDate = `${dayOfWeek}. ${dayOfMonth} ${month}`;
   return formattedDate;
 };
+
+export const getCity = (cityName) => {
+  return cityName.split('/')[1];
+};
