@@ -1,5 +1,5 @@
 import { formatedDate, getCity } from '../lib/helper';
-const CurrentForeCast = ({ currentData }) => {
+const CurrentForeCast = ({ currentData, units, setUnits }) => {
   return (
     <section>
       <figure>
@@ -9,9 +9,19 @@ const CurrentForeCast = ({ currentData }) => {
         ></img>
       </figure>
       <div className='location'>
-        <span>{currentData.current.temp.toFixed()}</span>
+        <span>
+          {currentData.current.temp.toFixed()} {units === 'metric' ? 'C' : 'F'}{' '}
+        </span>
         <h1>{getCity(currentData.timezone)}</h1>
         <p>Today | {formatedDate(currentData.current.dt)}</p>
+      </div>
+      <div>
+        <button type='button' onClick={() => setUnits('metric')}>
+          C
+        </button>
+        <button type='button' onClick={() => setUnits('imperial')}>
+          F
+        </button>
       </div>
     </section>
   );

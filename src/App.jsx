@@ -6,6 +6,8 @@ function App() {
   const [data, setData] = useState();
   const [lat, setLat] = useState('');
   const [long, setLong] = useState('');
+  const [units, setUnits] = useState('metric');
+
   useEffect(() => {
     const getLocation = async () => {
       navigator.geolocation.getCurrentPosition(function (position) {
@@ -18,7 +20,7 @@ function App() {
 
   useEffect(() => {
     if (lat !== '' && long !== '') {
-      const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=metric&appid=${
+      const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=${units}&appid=${
         import.meta.env.VITE_API_KEY
       }`;
       fetch(apiUrl)
@@ -26,11 +28,15 @@ function App() {
         .then((info) => setData(info))
         .catch((error) => console.error('Error fetching weather data:', error));
     }
-  }, [lat, long]);
+  }, [lat, long, units]);
 
   return (
     <div>
-      {data ? <CurrentForeCast currentData={data} /> : <p>Loading...</p>}
+      {data ? (
+        <CurrentForeCast currentData={data} units={units} setUnits={setUnits} />
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 }
