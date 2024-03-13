@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './index.scss';
+import './index.css';
 import CurrentForeCast from './components/CurrentForeCast';
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
   }, [lat, long, units]);
 
   return (
-    <div>
+    <div className='bg-main'>
       {data ? (
         <CurrentForeCast currentData={data} units={units} setUnits={setUnits} />
       ) : (

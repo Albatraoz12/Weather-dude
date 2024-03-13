@@ -1,7 +1,7 @@
 import { formatedDate, getCity } from '../lib/helper';
 const CurrentForeCast = ({ currentData, units, setUnits }) => {
   return (
-    <section>
+    <section className='mx-auto w-[90%] mt-10 border border-white'>
       <figure>
         <img
           src={`http://openweathermap.org/img/wn/${currentData.current.weather[0].icon}@2x.png`}
