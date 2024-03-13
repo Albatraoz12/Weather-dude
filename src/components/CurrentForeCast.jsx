@@ -2,7 +2,7 @@ import { formatedDate, getCity } from '../lib/helper';
 
 const CurrentForeCast = ({ currentData, units, setUnits }) => {
   return (
-    <section className='mx-auto w-[90%] mt-10 border border-white'>
+    <section className='mx-auto w-[90%] mt-10 flex justify-center items-center flex-col text-center gap-3'>
       <figure className='w-[80%] mx-auto'>
         <img
           className='h-48 w-full object-cover'
@@ -11,11 +11,16 @@ const CurrentForeCast = ({ currentData, units, setUnits }) => {
         />
       </figure>
       <div className='location'>
-        <span>
-          {currentData.current.temp.toFixed()} {units === 'metric' ? 'C' : 'F'}{' '}
-        </span>
-        <h1>{getCity(currentData.timezone)}</h1>
-        <p>Today | {formatedDate(currentData.current.dt)}</p>
+        <p className='text-6xl'>
+          {currentData.current.temp.toFixed()}°{' '}
+          {units === 'metric' ? 'C' : '°F'}{' '}
+        </p>
+        <h1 className='text-3xl font-bold my-2'>
+          {getCity(currentData.timezone)}
+        </h1>
+        <p className='text-xl'>
+          Today | {formatedDate(currentData.current.dt)}
+        </p>
       </div>
       <div>
         <button type='button' onClick={() => setUnits('metric')}>
